@@ -1,12 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public GameObject player;
-    public Weapon equippedWeapon;
 
     public GameObject[] enemies;
     public Transform[] spawnPoints;
@@ -19,7 +18,8 @@ public class GameManager : MonoBehaviour
     //Lives
     public GameObject playerPrefab;
     public List<GameObject> enemyPrefab;
-    public int player1Lives = 3;
+    public int Lives = 3;
+    public Text lives;
     public GameObject pauseMenu;
 
     public GameObject[] itemDrops;
@@ -69,30 +69,31 @@ public class GameManager : MonoBehaviour
     }
     GameObject respawnPlayer()
     {
-        player1Lives--;
+        LivesUI();
+        Lives--;
         Vector3 position = new Vector3(Random.Range(-60.0f, 60.0f), -5, Random.Range(-60.0f, 60.0f));
         GameObject playerRespawn = Instantiate(playerPrefab, position, Quaternion.identity) as GameObject;
-        playerRespawn.name = "Tank";
+        playerRespawn.name = "Player";
         return playerRespawn;
     }
-    public GameObject RandomEnemyPrefab()
-    {
-        return enemyPrefab[Random.Range(0, enemyPrefab.Count)];
-    }
-    public void spawnEnemy()
-    {
-        for(int enemies = 0; enemies < numberOfEnemies; enemies++)
-        {
-            //Vector3 Position for the tank ranging withint -60 to 60 in X and Z
-            Vector3 position = new Vector3(Random.Range(-60.0f, 60.0f), -5, Random.Range(-60.0f, 60.0f));
-            //Spawn the object based on the enemies listed
-            GameObject enemySpawnedObject =
-                Instantiate(RandomEnemyPrefab(), position, Quaternion.identity) as GameObject;
-            enemySpawnedObject.transform.parent = this.transform;
-            //Name of the Enemy Tank
-            enemySpawnedObject.name = "Enemy Tank (" + enemies + ")";
-        }
-    }
+    //public GameObject RandomEnemyPrefab()
+    //{
+    //    return enemyPrefab[Random.Range(0, enemyPrefab.Count)];
+    //}
+    //public void spawnEnemy()
+    //{
+    //    for(int enemies = 0; enemies < numberOfEnemies; enemies++)
+    //    {
+    //        //Vector3 Position for the tank ranging withint -60 to 60 in X and Z
+    //        Vector3 position = new Vector3(Random.Range(-60.0f, 60.0f), -5, Random.Range(-60.0f, 60.0f));
+    //        //Spawn the object based on the enemies listed
+    //        GameObject enemySpawnedObject =
+    //            Instantiate(RandomEnemyPrefab(), position, Quaternion.identity) as GameObject;
+    //        enemySpawnedObject.transform.parent = this.transform;
+    //        //Name of the Enemy Tank
+    //        enemySpawnedObject.name = "Enemy Tank (" + enemies + ")";
+    //    }
+    //}
     public void Pause()
     {
         pausedGame = true;
@@ -107,5 +108,9 @@ public class GameManager : MonoBehaviour
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
 
+    }
+    void LivesUI()
+    {
+        lives.text = "Lives: " + Lives.ToString();
     }
 }
