@@ -20,7 +20,6 @@ public class GameManager : MonoBehaviour
     public List<GameObject> enemyPrefab;
     public int Lives = 3;
     public Text lives;
-    public GameObject pauseMenu;
 
     public GameObject[] itemDrops;
     public List<GameObject> weightedDrops;
@@ -32,6 +31,10 @@ public class GameManager : MonoBehaviour
     private int machineGunDropsIndex = 1;
     private int pistolDropsIndex = 2;
     private int noDropIndex = 3;
+
+    public GameObject pauseMenu;
+    public GameObject optionMenu;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -112,5 +115,13 @@ public class GameManager : MonoBehaviour
     void LivesUI()
     {
         lives.text = "Lives: " + Lives.ToString();
+    }
+    public void PauseMenu()
+    {
+
+    }
+    public void OptionMenu()
+    {
+
     }
 }
