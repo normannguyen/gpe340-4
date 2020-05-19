@@ -11,6 +11,7 @@ public class Health : MonoBehaviour
     public Pawn pawn;
     private Text text;
     private GameObject character;
+    private Transform bar;
     [Header("Events")]
     [SerializeField, Tooltip("Raised every time the object is healed.")]
     private UnityEvent onHeal;
