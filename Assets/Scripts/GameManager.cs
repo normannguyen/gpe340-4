@@ -14,23 +14,12 @@ public class GameManager : MonoBehaviour
     public int maxActiveEnemies;
 
     public int numberOfEnemies;
-    public bool pausedGame;
+    public static bool pausedGame;
     //Lives
     public GameObject playerPrefab;
     public List<GameObject> enemyPrefab;
     public int Lives = 3;
     public Text lives;
-
-    public GameObject[] itemDrops;
-    public List<GameObject> weightedDrops;
-    public int healthDropWeight;
-    public int machineGunDropsWeight;
-    public int pistolDropsWeight;
-    public int noDropWeight;
-    private int healthDropsIndex = 0;
-    private int machineGunDropsIndex = 1;
-    private int pistolDropsIndex = 2;
-    private int noDropIndex = 3;
 
     public GameObject pauseMenu;
     public GameObject optionMenu;
@@ -57,16 +46,15 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (pausedGame == false)
+            if (pausedGame)
             {
-                Pause();
+                Unpause();
             }
             else
             {
-                Unpause();
+                Pause();
             }
         }
     }
