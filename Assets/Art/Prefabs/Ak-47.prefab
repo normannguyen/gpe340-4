@@ -93,6 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f9cbe7fed4174c4d8f94cda508a7f33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponIMG: {fileID: 21300000, guid: c05f3f71c4564524baf4ec5d829f4a9a, type: 3}
   Damage: 10
   Speed: 0.5
   damageDone: 10

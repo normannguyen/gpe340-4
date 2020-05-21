@@ -19,6 +19,7 @@ public class FollowCamera : MonoBehaviour
     
     void Start()
     {
+        player = GameObject.Find("Player").transform;
         //Get Components for Camera and Transform.
         playerCamera = GetComponent<Camera>();
         tf = GetComponent<Transform>();

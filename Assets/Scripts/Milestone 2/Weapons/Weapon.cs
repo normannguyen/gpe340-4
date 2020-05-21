@@ -5,14 +5,15 @@ using UnityEngine.Events;
 
 public abstract class Weapon : MonoBehaviour
 {
+    public Sprite weaponIMG;
     public float Damage;
     public float Speed;
-    [SerializeField] protected float damageDone;
+    [SerializeField]protected float damageDone;
     [SerializeField]public Transform leftHand;
     [SerializeField]public Transform rightHand;
     public virtual void Start()
     {
-
+        
     }
 
     public virtual void OnReleaseTrigger()

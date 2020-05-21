@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class HandGun : Weapon
 {
+    
     //Ammo Count
     public float ammoCount = 15;
     //Bullet Prefab
@@ -19,6 +20,7 @@ public class HandGun : Weapon
     public override void Start()
     {
         ShootingCountdown = 0;
+
     }
     //OnPullTrigger
     public override void OnPullTrigger()

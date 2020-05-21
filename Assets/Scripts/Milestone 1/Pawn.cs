@@ -5,9 +5,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Pawn : MonoBehaviour
 {
+    private GameManager gm;
     //Animator
     public Animator anim;
     private GameObject character;
@@ -44,7 +46,10 @@ public class Pawn : MonoBehaviour
         enemySpawnCount = GetComponent<EnemySpawner>();
         character = this.gameObject;
     }
-
+    private void Awake()
+    {
+        gm = GameManager.instance;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -66,7 +71,7 @@ public class Pawn : MonoBehaviour
         //}
         currentHealth -= poisonEffect;
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
-        if (currentHealth <= 0)
+        if (currentHealth == 0)
         {
             onDeath.Invoke();
             Destroy(character, 2.0f);
@@ -84,10 +89,10 @@ public class Pawn : MonoBehaviour
         //}
         currentHealth -= death;
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
-        if (currentHealth <= 0)
+        if (currentHealth == 0)
         {
             onDeath.Invoke();
-            Destroy(character, 2.0f);
+            //Destroy(character, 2.0f);
         }
     }
     //Damage Function
@@ -95,7 +100,7 @@ public class Pawn : MonoBehaviour
     {
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
-        if (currentHealth <= 0)
+        if (currentHealth == 0)
         {
             onDeath.Invoke();
             Destroy(character, 2.0f);
@@ -120,8 +125,10 @@ public class Pawn : MonoBehaviour
 
         GameObject weaponObject = Instantiate(newWeapon.gameObject, attachmentPoint.position, attachmentPoint.rotation) as GameObject;
         weaponObject.transform.parent = attachmentPoint;
-
+        
         equippedWeapon = weaponObject.GetComponent<Weapon>();
+        GameManager.instance.weaponIMG.GetComponent<Image>().sprite = equippedWeapon.weaponIMG;
+        Destroy(equippedWeapon.gameObject);
         // change the layer
         equippedWeapon.gameObject.layer = gameObject.layer;
         OnTriggerPull.AddListener(equippedWeapon.OnPullTrigger);
@@ -133,6 +140,7 @@ public class Pawn : MonoBehaviour
     {
         OnTriggerPull.RemoveListener(equippedWeapon.OnPullTrigger);
         OnTriggerRelease.RemoveListener(equippedWeapon.OnReleaseTrigger);
+        GameManager.instance.weaponIMG.GetComponent<Image>().sprite = null;
         Destroy(equippedWeapon.gameObject);
         equippedWeapon = null;
     }

@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class RifleWeapon : Weapon
 {
-
+    
     //Ammo Count
     public float ammoCount = 15;
     //Bullet Prefab

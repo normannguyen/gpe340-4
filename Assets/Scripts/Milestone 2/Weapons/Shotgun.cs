@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Shotgun : Weapon
 {
+    
     public float ammoCount = 7;
     [SerializeField] private GameObject prefabBullet;
     [SerializeField] private Transform firePoint;
@@ -17,6 +18,7 @@ public class Shotgun : Weapon
     public override void Start()
     {
         ShootingCountdown = 0;
+        
     }
     public override void OnPullTrigger()
     {

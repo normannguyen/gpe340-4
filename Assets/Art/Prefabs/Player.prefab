@@ -1704,8 +1704,8 @@ MonoBehaviour:
   attachmentPoint: {fileID: 3049994759468772758}
   rightHandPoint: {fileID: 0}
   leftHandPoint: {fileID: 0}
-  rigidController: {fileID: 0}
   agent: {fileID: 0}
+  enemySpawnCount: {fileID: 0}
   OnTriggerPull:
     m_PersistentCalls:
       m_Calls: []

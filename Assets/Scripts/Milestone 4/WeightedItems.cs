@@ -3,43 +3,44 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[System.Serializable]
-public class WeightedItems
+public class WeightedItems : MonoBehaviour
 {
-    [SerializeField, Tooltip("The object selected by this choice.")]
-    private Object value;
-    [SerializeField, Tooltip("The chance to select the value.")]
-    private double chance = 1.0;
-    // Start is called before the first frame update
-    void Start()
+
+    public List<GameObject> weightedItems;
+    public int healthWeight = 30;
+    public int rifleWeight = 10;
+    public int pistolWeight = 2;
+
+    public GameObject health;
+    public GameObject pistol;
+    public GameObject rifle;
+    private void Start()
     {
-        
+        Setup();
     }
-
-    // Update is called once per frame
-    void Update()
+    public void RNG()
     {
-        
+        int randomNumber = Random.Range(0, weightedItems.Count);
+        SpawnItem(randomNumber);
     }
-
-}
-[CustomPropertyDrawer(typeof(WeightedItems))]
-public class WeightedObjectDrawer : PropertyDrawer
-{
-    public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+    public void SpawnItem(int random)
     {
-        EditorGUI.BeginProperty(position, label, property);
-        position = EditorGUI.PrefixLabel(position, GUIUtility.GetControlID(FocusType.Passive), label);
-        var indent = EditorGUI.indentLevel;
-        EditorGUI.indentLevel = 0;
-
-        var objectRect = new Rect(position.x, position.y, position.width - 40f, position.height);
-        var chanceRect = new Rect(position.x + position.width - 40f, position.y, 40f, position.height);
-
-        EditorGUI.PropertyField(objectRect, property.FindPropertyRelative("value"), GUIContent.none);
-        EditorGUI.PropertyField(chanceRect, property.FindPropertyRelative("chance"), GUIContent.none);
-
-        EditorGUI.indentLevel = indent;
-        EditorGUI.EndProperty();
+        GameObject item = Instantiate(weightedItems[random], GameManager.instance.spawnPoints[0]);
+        GameManager.instance.spawnedItem = item;
+    }
+    void Setup()
+    {
+        for(int i = 0; i < healthWeight; i++)
+        {
+            weightedItems.Add(health);
+        }
+        for (int i = 0; i < pistolWeight; i++)
+        {
+            weightedItems.Add(pistol);
+        }
+        for (int i = 0; i < rifleWeight; i++)
+        {
+            weightedItems.Add(rifle);
+        }
     }
 }
