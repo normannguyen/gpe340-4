@@ -1698,6 +1698,7 @@ MonoBehaviour:
   currentSpeed: 1
   currentHealth: 100
   maxHealth: 100
+  itemDrop: {fileID: 0}
   radius: 0
   tickRate: 0.333333
   countDown: 10

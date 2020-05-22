@@ -97,24 +97,7 @@ public class GameManager : MonoBehaviour
         player.transform.position = position;
     }
 
-    //public GameObject RandomEnemyPrefab()
-    //{
-    //    return enemyPrefab[Random.Range(0, enemyPrefab.Count)];
-    //}
-    //public void spawnEnemy()
-    //{
-    //    for(int enemies = 0; enemies < numberOfEnemies; enemies++)
-    //    {
-    //        //Vector3 Position for the tank ranging withint -60 to 60 in X and Z
-    //        Vector3 position = new Vector3(Random.Range(-60.0f, 60.0f), -5, Random.Range(-60.0f, 60.0f));
-    //        //Spawn the object based on the enemies listed
-    //        GameObject enemySpawnedObject =
-    //            Instantiate(RandomEnemyPrefab(), position, Quaternion.identity) as GameObject;
-    //        enemySpawnedObject.transform.parent = this.transform;
-    //        //Name of the Enemy Tank
-    //        enemySpawnedObject.name = "Enemy Tank (" + enemies + ")";
-    //    }
-    //}
+   
     public void Pause()
     {
         pausedGame = true;
@@ -145,5 +128,9 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         SceneManager.LoadScene("GameOver");
+    }
+    public void EnemyItem(GameObject itemDrop)
+    {
+        weights.RNG();
     }
 }

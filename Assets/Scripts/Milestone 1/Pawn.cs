@@ -19,6 +19,7 @@ public class Pawn : MonoBehaviour
     public float currentHealth;
     public float maxHealth;
 
+    public WeightedItems itemDrop;
     public float radius;
     private List<Collider> objectsInTrigger = new List<Collider>();
     public float tickRate = 0.333333f;
@@ -45,6 +46,7 @@ public class Pawn : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         enemySpawnCount = GetComponent<EnemySpawner>();
         character = this.gameObject;
+        itemDrop = GetComponent<WeightedItems>();
     }
     private void Awake()
     {
@@ -73,6 +75,7 @@ public class Pawn : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
         if (currentHealth == 0)
         {
+            itemDrop.RNG();
             onDeath.Invoke();
             Destroy(character, 2.0f);
         }
@@ -91,7 +94,9 @@ public class Pawn : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
         if (currentHealth == 0)
         {
+            
             onDeath.Invoke();
+            itemDrop.RNG();
             //Destroy(character, 2.0f);
         }
     }
@@ -102,9 +107,11 @@ public class Pawn : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
         if (currentHealth == 0)
         {
+            
             onDeath.Invoke();
+            //GameManager.instance.EnemyItem();
             Destroy(character, 2.0f);
-            enemySpawnCount.EnemyDeath();
+            //enemySpawnCount.EnemyDeath();
         }
 
     }
@@ -128,7 +135,6 @@ public class Pawn : MonoBehaviour
         
         equippedWeapon = weaponObject.GetComponent<Weapon>();
         GameManager.instance.weaponIMG.GetComponent<Image>().sprite = equippedWeapon.weaponIMG;
-        Destroy(equippedWeapon.gameObject);
         // change the layer
         equippedWeapon.gameObject.layer = gameObject.layer;
         OnTriggerPull.AddListener(equippedWeapon.OnPullTrigger);

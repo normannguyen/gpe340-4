@@ -288,6 +288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f9cbe7fed4174c4d8f94cda508a7f33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponIMG: {fileID: 0}
   Damage: 10
   Speed: 0.5
   damageDone: 10
@@ -876,6 +877,7 @@ GameObject:
   - component: {fileID: 2487798907239321980}
   - component: {fileID: 1730857095294023842}
   - component: {fileID: -6119627895825618838}
+  - component: {fileID: 6897352729935379175}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Untagged
@@ -966,6 +968,7 @@ MonoBehaviour:
   currentSpeed: 1
   currentHealth: 100
   maxHealth: 100
+  itemDrop: {fileID: 0}
   radius: 0
   tickRate: 0.333333
   countDown: 10
@@ -973,6 +976,7 @@ MonoBehaviour:
   rightHandPoint: {fileID: 0}
   leftHandPoint: {fileID: 0}
   agent: {fileID: 1730857095294023842}
+  enemySpawnCount: {fileID: 0}
   OnTriggerPull:
     m_PersistentCalls:
       m_Calls: []
@@ -1015,6 +1019,7 @@ MonoBehaviour:
   AIpawn: {fileID: 4327917868178769109}
   target: {fileID: 8010064101549716736, guid: d6c1efc58890e6046913b898d5cab4b3, type: 3}
   navMeshAgent: {fileID: 1730857095294023842}
+  weapon: {fileID: 0}
 --- !u!195 &1730857095294023842
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1050,6 +1055,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isRagDoll: 0
+--- !u!114 &6897352729935379175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2472864150540310771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbb7cde467ee9ba428b491df8a32b7dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weightedItems: []
+  healthWeight: 30
+  rifleWeight: 10
+  pistolWeight: 2
+  health: {fileID: 3973718521702615670, guid: 81b1380f0c0ce65408143f33b2c3d99e, type: 3}
+  pistol: {fileID: 4613251643705620425, guid: 3d641fb54ae554746940df59eda5c260, type: 3}
+  rifle: {fileID: 7440546276449015147, guid: 426413b19b6259242b340c1f4a1596ca, type: 3}
 --- !u!1 &2511397534978587835
 GameObject:
   m_ObjectHideFlags: 0
