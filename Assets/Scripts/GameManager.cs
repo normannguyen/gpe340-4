@@ -15,9 +15,10 @@ public class GameManager : MonoBehaviour
 
     public GameObject weaponIMG;
 
+    [Header("Weighted Items")]
     public GameObject spawnedItem;
     public WeightedItems weights;
-    public int numberOfEnemies;
+
     public static bool pausedGame;
     //Lives
     public GameObject playerPrefab;
@@ -90,6 +91,8 @@ public class GameManager : MonoBehaviour
         playerSpawnObject.name = "Player";
         playerPrefab.gameObject.SetActive(true);
     }
+
+    //Respawn Player
     public void respawnPlayer()
     {
         LivesUI();
@@ -119,14 +122,6 @@ public class GameManager : MonoBehaviour
     void LivesUI()
     {
         lives.text = "Lives: " + Lives.ToString();
-    }
-    public void PauseMenu()
-    {
-
-    }
-    public void OptionMenu()
-    {
-
     }
     public void GameOver()
     {

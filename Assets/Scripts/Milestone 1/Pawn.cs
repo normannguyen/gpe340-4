@@ -11,10 +11,13 @@ public class Pawn : MonoBehaviour
 {
     private GameManager gm;
     //Animator
+    [Header("Character")]
     public Animator anim;
     private GameObject character;
     public Weapon equippedWeapon;
     //Current Speed for the character.
+
+    [Header("Character Attributes")]
     public float currentSpeed = 1f;
     public float currentHealth;
     public float maxHealth;
@@ -27,6 +30,7 @@ public class Pawn : MonoBehaviour
     private Health health;
 
     //Attachments and Joints
+    [Header("Attachments")]
     public Transform attachmentPoint;
     public Transform rightHandPoint;
     public Transform leftHandPoint;
@@ -34,6 +38,7 @@ public class Pawn : MonoBehaviour
 
     public EnemySpawner enemySpawnCount;
     // events
+    [Header("Events")]
     public UnityEvent OnTriggerPull;
     public UnityEvent OnTriggerRelease;
     public UnityEvent onDeath;

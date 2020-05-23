@@ -8,6 +8,7 @@ using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
+    [Header("Health UI")]
     public Pawn pawn;
     private Text text;
     private GameObject character;
@@ -25,7 +26,9 @@ public class Health : MonoBehaviour
     }
     void Awake()
     {
-        //UI Text
+        
+
+        //UI Text and bar
         text = GameObject.Find("HealthText").GetComponent<Text>();
     }
 
@@ -33,6 +36,5 @@ public class Health : MonoBehaviour
     void Update()
     {
         text.text = "Health: " + pawn.currentHealth;
-
     }
 }

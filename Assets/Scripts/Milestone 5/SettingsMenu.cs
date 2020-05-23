@@ -21,6 +21,7 @@ public class SettingsMenu : MonoBehaviour
     public float musicVolume;
     public float sFXVolume;
 
+    //Resolution
     Resolution[] resolutions;
    
     // Start is called before the first frame update
@@ -30,6 +31,7 @@ public class SettingsMenu : MonoBehaviour
         resolutionDropdown.ClearOptions();
         List<string> options = new List<string>();
 
+        //Getters for Audio
         masterVolumeSlider.value = masterVolume;
         musicVolumeSlider.value = musicVolume;
         sFXVolumeSlider.value = sFXVolume;
@@ -51,7 +53,7 @@ public class SettingsMenu : MonoBehaviour
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
     }
-
+    //Update on the music
     void Update()
     {
         masterVolume = masterVolumeSlider.value;
@@ -61,15 +63,20 @@ public class SettingsMenu : MonoBehaviour
         audioMixer.SetFloat("Music", musicVolume);
         audioMixer.SetFloat("Sounds", sFXVolume);
     }
+    //Set Resolution
     public void SetResolution(int resolutionIndex)
     {
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
+
+    //Quality
     public void SetQuality(int qualitySet)
     {
         QualitySettings.SetQualityLevel(qualitySet);
     }
+
+    //FullScreen
     public void SetFullScreen(bool isFullScreen)
     {
         Screen.fullScreen = isFullScreen;
@@ -83,19 +90,9 @@ public class SettingsMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Menu");
     }
-    public void Option()
-    {
-
-    }
     public void Quit()
     {
         Application.Quit();
         Debug.Log("Quit");
-    }
-    public void SaveMusicSettings()
-    {
-        PlayerPrefs.SetFloat("Master", masterVolume);
-        PlayerPrefs.SetFloat("Sounds", sFXVolume);
-        PlayerPrefs.SetFloat("Music", musicVolume);
     }
 }

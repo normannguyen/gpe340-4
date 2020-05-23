@@ -19,6 +19,7 @@ public class RifleWeapon : Weapon
     //Countdown
     private float ShootingCountdown = 2;
 
+    [Header("Effect")]
     public GameObject muzzleEffect;
     public GameObject collisionEffect;
     public override void Start()
@@ -64,15 +65,11 @@ public class RifleWeapon : Weapon
             bulletData.moveSpeed = Speed;
         }
     }
+    //Generates the Effect
     void Flash()
     {
         GameObject muzzleFlash = Instantiate(muzzleEffect, firePoint.position, firePoint.rotation);
         Destroy(muzzleFlash, .05f);
         muzzleFlash.GetComponent<ParticleSystem>().Play();
-    }
-    void Collision()
-    {
-        GameObject collision = Instantiate(muzzleEffect, transform.position, Quaternion.identity);
-        collision.GetComponent<ParticleSystem>().Play();
     }
 }
