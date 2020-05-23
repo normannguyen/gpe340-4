@@ -1001,6 +1001,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 6897352729935379175}
+        m_MethodName: GetEnemyLocation
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2130349696869132296}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   IKweight: 1
@@ -1074,6 +1085,7 @@ MonoBehaviour:
   health: {fileID: 3973718521702615670, guid: 81b1380f0c0ce65408143f33b2c3d99e, type: 3}
   pistol: {fileID: 4613251643705620425, guid: 3d641fb54ae554746940df59eda5c260, type: 3}
   rifle: {fileID: 7440546276449015147, guid: 426413b19b6259242b340c1f4a1596ca, type: 3}
+  randomNumber: 0
 --- !u!1 &2511397534978587835
 GameObject:
   m_ObjectHideFlags: 0

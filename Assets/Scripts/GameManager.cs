@@ -26,8 +26,11 @@ public class GameManager : MonoBehaviour
     public Text lives;
 
     public GameObject pauseMenu;
+
+    public float sfxVolume;
+    public float musicVolume;
     //public GameObject optionMenu;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -132,5 +135,13 @@ public class GameManager : MonoBehaviour
     public void EnemyItem(GameObject itemDrop)
     {
         weights.RNG();
+    }
+    public void setSFXVolume(float volume)
+    {
+        sfxVolume = volume;
+    }
+    public void setMusicVolume(float volume)
+    {
+        musicVolume = volume;
     }
 }

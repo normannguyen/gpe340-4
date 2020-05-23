@@ -7,15 +7,21 @@ public class SoundManager : MonoBehaviour
 {
     public AudioMixer mixer;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    //Set Music Volume
+    public void SetMusicVolume(float volume)
+    {
+        mixer.SetFloat("Music", volume);
+    }
+
+    //SetSFXVolume
+    public void SetSFXVolume(float volume)
+    {
+        mixer.SetFloat("Sounds", volume);
     }
 }

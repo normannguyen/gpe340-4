@@ -1608,6 +1608,7 @@ GameObject:
   - component: {fileID: 3049994759409180161}
   - component: {fileID: 3049994759409180162}
   - component: {fileID: 8418255940768844144}
+  - component: {fileID: 8796739254355792092}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -1789,6 +1790,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isRagDoll: 0
+--- !u!81 &8796739254355792092
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6445265713487431443}
+  m_Enabled: 1
 --- !u!1 &6679392953349596149
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,8 +8,8 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemyPrefab;
     public int currentEnemies;
     public int maxEnemies = 2;
-
-    public float spawnDelay = 1f;
+    public GameObject particleSpawn;
+    public float spawnDelay = 3f;
     //This will Spawn our enemies
     private void Start()
     {
@@ -22,6 +22,7 @@ public class EnemySpawner : MonoBehaviour
         if (currentEnemies <= maxEnemies)
         {
             GameObject enemy = (GameObject)Instantiate(enemyPrefab, this.transform.position, Quaternion.identity);
+            SpawnEffect();
             Invoke("SpawnEnemy", 5);
             currentEnemies++;
         }
@@ -30,4 +31,11 @@ public class EnemySpawner : MonoBehaviour
     {
         currentEnemies--;
     }
+
+    void SpawnEffect()
+    {
+        GameObject collision = Instantiate(particleSpawn, transform.position, Quaternion.identity);
+        collision.GetComponent<ParticleSystem>().Play();
+    }
+
 }
